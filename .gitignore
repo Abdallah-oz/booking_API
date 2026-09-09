@@ -1,0 +1,48 @@
+venv/
+__pycache__/
+*.pyc
+.env
+# Environnement virtuel
+.venv/
+venv/
+env/
+
+# Variables d'environnement sensibles
+.env
+.env.local
+.env.*.local
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Bases de données locales (si tu testes avec SQLite au début)
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# Alembic (garder les migrations, ignorer seulement le cache si besoin)
+# (généralement on NE met PAS alembic/versions dans le gitignore, on les commit)
+
+# IDE / éditeurs
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Tests / coverage
+.pytest_cache/
+htmlcov/
+.coverage
