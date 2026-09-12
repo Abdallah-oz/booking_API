@@ -1,23 +1,30 @@
-#on cree les table de notre base de donnees
+"""SQLAlchemy model for application accounts."""
+
 import enum
+from datetime import datetime
+
+from sqlalchemy import DateTime, Enum as SqlEnum, String, func
+from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
-from sqlalchemy.orm import Mapped, mapped_column
 
 
 class Role(str, enum.Enum):
     ADMIN = "admin"
     CLIENT = "client"
-    HOTEL= "hotel"
+    HOTEL = "hotel"
+
+
 class User(Base):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    email: Mapped[str]= mapped_column(unique=True, email=True)
-    hashed_password: Mapped[str]
-    role: Mapped[Role] = mapped_column(default=Role.CLIENT)
+    email: Mapped[str] = mapped_column(String(255), unique=True, index=True)
+    hashed_password: Mapped[str] = mapped_column(String(255))
+    role: Mapped[Role] = mapped_column(
+        SqlEnum(Role, name="user_role"), default=Role.CLIENT
+    )
     is_active: Mapped[bool] = mapped_column(default=True)
-    created_at: Mapped[str] = mapped_column(nullable=False)
-
-
-
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
