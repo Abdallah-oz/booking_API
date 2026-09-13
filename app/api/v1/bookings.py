@@ -9,7 +9,7 @@ from app.crud.booking import (
     update_booking,
     delete_booking,
 )
-from app.crud.room import get_room_by_id
+from app.crud.rooms import get_room_by_id
 from app.crud.hotel import get_hotel_by_id
 from app.db.session import get_session
 from app.models.user import User

@@ -1,0 +1,13 @@
+.venv/
+.env
+.git/
+.gitignore
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+booking.db
+alembic/versions/__pycache__/
+README.md
+.vscode/
+.idea/
