@@ -77,3 +77,8 @@ async def update_booking(
 async def delete_booking(session: AsyncSession, booking: Booking) -> None:
     await session.delete(booking)
     await session.commit()
+    
+    
+async def get_all_bookings(session: AsyncSession) -> list[Booking]:
+    result = await session.execute(select(Booking))
+    return list(result.scalars().all())

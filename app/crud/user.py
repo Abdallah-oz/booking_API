@@ -33,3 +33,7 @@ async def create_user(session: AsyncSession, user_data: UserCreate) -> User:
     await session.refresh(new_user)
 
     return new_user
+
+async def get_all_users(session: AsyncSession) -> list[User]:
+    result = await session.execute(select(User))
+    return list(result.scalars().all())
